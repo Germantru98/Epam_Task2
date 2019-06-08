@@ -1,36 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Epam_Task2
+﻿namespace Epam_Task2
 {
-    class BinarySearch
+    internal class BinarySearch
     {
-        public void BSearch(int[] input, int key, int start, int end)
+        public int BSearch(int[] input, int key)
         {
-            int index = -1;
-            int mid = (start + end) / 2;            
-            if (input[start] <= key && key <= input[end])
+            int L = 0;
+            int R = input.Length - 1;
+            while (L <= R)
             {
-                if (key < input[mid])
+                int m = (L + R) / 2;
+
+                if (input[m] < key)
                 {
-                    BSearch(input, key, start, mid);
+                    L = m + 1;
                 }
-                else if (key > input[mid])
+                else if (input[m] > key)
                 {
-                    BSearch(input, key, mid + 1, end);
+                    R = m - 1;
                 }
-                else if (key == input[mid])
-                {
-                    index = mid;
-                }
-                if (index != -1)
-                {
-                    Console.WriteLine($"Элемент найден на позиции ->{index}");                    
-                }                
-            }            
+                else return m;
+            }
+            return -1;
         }
     }
 }

@@ -27,9 +27,35 @@ namespace Epam_Task2
                         arr = l.GetArray(0);
                         s.ArraySort(arr);
                         ShowArray(arr);
-                        Console.WriteLine("Выберите элемент для поиска");
-                        int elem = int.Parse(Console.ReadLine());
-                        b.BSearch(arr, elem, 0, 14);
+                        int elem = 0;
+                        Console.WriteLine("Введите элемент для поиска");
+                        try
+                        {
+                            if (!int.TryParse(Console.ReadLine(), out elem))
+                            {
+                                throw new Exception("Введено некоррекатное значение для поиска в массиве");
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine($"{e.Message}\nВведите корректное значение для поиска");
+                            if (!int.TryParse(Console.ReadLine(), out elem))
+                            {
+                                Console.WriteLine("Программа завершает работу...");
+                            }
+                        }
+                        finally
+                        {
+                            int result = b.BSearch(arr, elem);
+                            if (result != -1)
+                            {
+                                Console.WriteLine($"Элемент найден на позиции ->{result}");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Элемент не обнаружен");
+                            }
+                        }
                         break;
                     }
                 case 1:
@@ -37,9 +63,35 @@ namespace Epam_Task2
                         arr = l.GetArray(1);
                         s.ArraySort(arr);
                         ShowArray(arr);
-                        Console.WriteLine("Выберите элемент для поиска");
-                        int elem = int.Parse(Console.ReadLine());
-                        b.BSearch(arr, elem, 0, 14);
+                        int elem = 0;
+                        Console.WriteLine("Введите элемент для поиска");
+                        try
+                        {
+                            if (!int.TryParse(Console.ReadLine(), out elem))
+                            {
+                                throw new Exception("Введено некоррекатное значение для поиска в массиве");
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine($"{e.Message}\nВведите корректное значение для поиска");
+                            if (!int.TryParse(Console.ReadLine(), out elem))
+                            {
+                                Console.WriteLine("Программа завершает работу...");
+                            }
+                        }
+                        finally
+                        {
+                            int result = b.BSearch(arr, elem);
+                            if (result != -1)
+                            {
+                                Console.WriteLine($"Элемент найден на позиции ->{result}");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Элемент не обнаружен");
+                            }
+                        }
                         break;
                     }
                 default:
@@ -48,8 +100,6 @@ namespace Epam_Task2
                         break;
                     }
             }
-            
-            
         }
     }
 }
