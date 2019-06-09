@@ -8,7 +8,7 @@ namespace Epam_Task2
         {
             foreach (var i in arr)
             {
-                Console.WriteLine("arr= " + i);
+                Console.WriteLine("arr = " + i);
             }
         }
 
